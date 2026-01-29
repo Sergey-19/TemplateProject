@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="rename.ps1" />
+  </Folder>
+  <Project Path="EQX.Core/EQX.Core/EQX.Core.csproj" />
+  <Project Path="EQX.Device/EQX.Device/EQX.Device.csproj" />
+  <Project Path="EQX.InOut/EQX.InOut/EQX.InOut.csproj" />
+  <Project Path="EQX.Motion/EQX.Motion/EQX.Motion.csproj" />
+  <Project Path="EQX.Process/EQX.Process/EQX.Process.csproj" />
+  <Project Path="EQX.UI/EQX.UI/EQX.UI.csproj" />
+  <Project Path="EQX.Vision/EQX.Vision/EQX.Vision.csproj" />
+  <Project Path="Genaral_Template/Genaral_Template.csproj" Id="3bab613c-6f0c-4777-987f-ed7b1d5d9c1f" />
+</Solution>
