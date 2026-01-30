@@ -44,7 +44,7 @@
               "RelativeDocumentMoniker": "rename.ps1",
               "ToolTip": "D:\\03.Project\\TemplateProject1\\TemplateProject\\rename.ps1",
               "RelativeToolTip": "rename.ps1",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2026-01-29T09:33:59.104Z",
               "EditorCaption": ""
@@ -70,8 +70,7 @@
               "ToolTip": "D:\\03.Project\\TemplateProject1\\TemplateProject\\Genaral_Template\\MainWindow.xaml",
               "RelativeToolTip": "Genaral_Template\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-01-29T09:14:42.054Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-29T09:14:42.054Z"
             },
             {
               "$type": "Document",

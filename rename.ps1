@@ -45,4 +45,4 @@ ForEach-Object {
         Set-Content $_.FullName
 }
 
-Write-Host "DONE ✅ Project renamed to '$NewName'" -ForegroundColor Green
+Write-Host "DONE Project renamed to '$NewName'" -ForegroundColor Green
