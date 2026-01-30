@@ -3,37 +3,45 @@
     [string]$NewName
 )
 
-$OldName = "Machine1"
+$OldName = "Genaral_Template"
 
 Write-Host "Rename project from '$OldName' to '$NewName'" -ForegroundColor Cyan
 
-# 1. Rename solution (.sln or .slnx)
-Get-ChildItem -File -Include *.sln, *.slnx | ForEach-Object {
-    $newFile = $_.Name -replace $OldName, $NewName
-    Rename-Item $_.FullName $newFile
+Get-ChildItem -Path . -File | Where-Object {
+    $_.Extension -in ".sln", ".slnx"
+} | ForEach-Object {
+
+    if ($_.Name -like "*$OldName*") {
+        $newName = $_.Name -replace $OldName, $NewName
+        Write-Host "Rename solution: $($_.Name) -> $newName"
+        Rename-Item $_.FullName $newName
+    }
 }
 
-# 2. Rename project folder
 if (Test-Path $OldName) {
+    Write-Host "Rename folder: $OldName -> $NewName"
     Rename-Item $OldName $NewName
 }
 
-# 3. Rename csproj
 Get-ChildItem -Recurse -Filter *.csproj | ForEach-Object {
-    $newFile = $_.Name -replace $OldName, $NewName
-    Rename-Item $_.FullName $newFile
+
+    if ($_.Name -like "*$OldName*") {
+        $newName = $_.Name -replace $OldName, $NewName
+        Write-Host "Rename csproj: $($_.Name) -> $newName"
+        Rename-Item $_.FullName $newName
+    }
 }
 
-# 4. Replace namespace & references in files
 Get-ChildItem -Recurse -Include *.cs,*.xaml,*.csproj,*.sln,*.slnx |
 Where-Object {
     $_.FullName -notmatch "\\bin\\" -and
     $_.FullName -notmatch "\\obj\\" -and
-    $_.FullName -notmatch "\\.git\\"
+    $_.FullName -notmatch "\\.git\\" -and
+    $_.FullName -notmatch "\\.vs\\"
 } |
 ForEach-Object {
-    (Get-Content $_.FullName) |
-        ForEach-Object { $_ -replace $OldName, $NewName } |
+    (Get-Content $_.FullName) `
+        -replace $OldName, $NewName |
         Set-Content $_.FullName
 }
 
