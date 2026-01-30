@@ -1,34 +1,33 @@
-﻿param(
+﻿#Minh update 30/01/2026
+param(
     [Parameter(Mandatory = $true)]
-    [string]$NewName
+    [string]$ProjectName
 )
 
 $OldName = "Genaral_Template"
 
-Write-Host "Rename project from '$OldName' to '$NewName'" -ForegroundColor Cyan
+Write-Host "Rename project from '$OldName' to '$ProjectName'" -ForegroundColor Cyan
 
-Get-ChildItem -Path . -File | Where-Object {
-    $_.Extension -in ".sln", ".slnx"
-} | ForEach-Object {
+$solutionFile = Get-ChildItem -Path . -File | Where-Object {
+    $_.Extension -in ".sln", ".slnx" -and $_.Name -like "*$OldName*"
+}
 
-    if ($_.Name -like "*$OldName*") {
-        $newName = $_.Name -replace $OldName, $NewName
-        Write-Host "Rename solution: $($_.Name) -> $newName"
-        Rename-Item $_.FullName $newName
-    }
+if ($solutionFile) {
+    $solutionNewName = $solutionFile.Name -replace $OldName, $ProjectName
+    Write-Host "Rename solution: $($solutionFile.Name) -> $solutionNewName"
+    Rename-Item $solutionFile.FullName $solutionNewName
 }
 
 if (Test-Path $OldName) {
-    Write-Host "Rename folder: $OldName -> $NewName"
-    Rename-Item $OldName $NewName
+    Write-Host "Rename folder: $OldName -> $ProjectName"
+    Rename-Item $OldName $ProjectName
 }
 
 Get-ChildItem -Recurse -Filter *.csproj | ForEach-Object {
-
     if ($_.Name -like "*$OldName*") {
-        $newName = $_.Name -replace $OldName, $NewName
-        Write-Host "Rename csproj: $($_.Name) -> $newName"
-        Rename-Item $_.FullName $newName
+        $csprojNewName = $_.Name -replace $OldName, $ProjectName
+        Write-Host "Rename csproj: $($_.Name) -> $csprojNewName"
+        Rename-Item $_.FullName $csprojNewName
     }
 }
 
@@ -41,8 +40,8 @@ Where-Object {
 } |
 ForEach-Object {
     (Get-Content $_.FullName) `
-        -replace $OldName, $NewName |
+        -replace $OldName, $ProjectName |
         Set-Content $_.FullName
 }
 
-Write-Host "DONE Project renamed to '$NewName'" -ForegroundColor Green
+Write-Host "DONE Project renamed to '$ProjectName'" -ForegroundColor Green
