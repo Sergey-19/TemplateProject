@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\03.Project\TemplateProject1\TemplateProject\Genaral_Template\Genaral_Template\obj\Debug\
+D:\03.Project\TemplateProject1\TemplateProject\Genaral_Template\obj\Debug\
 Genaral_Template
 none
 false
 DEBUG;TRACE
-D:\03.Project\TemplateProject1\TemplateProject\Genaral_Template\Genaral_Template\App.xaml
-1219584333
+D:\03.Project\TemplateProject1\TemplateProject\Genaral_Template\App.xaml
+2-85212606
 
-7-1251829222
+10-915326984
 13-38814620
-MainWindow.xaml;
+MainWindow.xaml;MVVM\Views\Window1.xaml;
 
 False
 
